@@ -1,0 +1,23 @@
+{
+  "name": "ohc413-policies",
+  "version": "1.0.0",
+  "description": "Policy documents for Pack 413 and Troop 413",
+  "type": "module",
+  "scripts": {
+    "convert": "tsx markdown-converter/src/index.ts",
+    "build": "tsc -p markdown-converter/tsconfig.json",
+    "dev": "tsx watch markdown-converter/src/index.ts"
+  },
+  "keywords": ["scouting", "policies"],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.2",
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "glob": "^11.0.0"
+  }
+}

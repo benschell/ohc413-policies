@@ -1,0 +1,97 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Packages
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+% Geometry
+\geometry{
+  letterpaper,
+  margin=1in,
+  headheight=14pt
+}
+
+% Scouting America Brand Colors
+\definecolor{ScoutingRed}{HTML}{CE1126}
+\definecolor{ScoutingDarkBlue}{HTML}{003366}
+\definecolor{ScoutingWarmGray}{HTML}{515354}
+
+% Fonts - Roboto family (must be installed on system)
+% Will search system font directories automatically
+\setmainfont{Roboto Condensed}[
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic
+]
+
+\newfontfamily\robotoslab{Roboto Slab}[
+  UprightFont=*-Regular,
+  BoldFont=*-Bold
+]
+
+% Title formatting
+\titleformat{\section}
+  {\robotoslab\Large\bfseries\color{ScoutingWarmGray}}
+  {}
+  {0em}
+  {}
+
+\titleformat{\subsection}
+  {\robotoslab\large\bfseries\color{ScoutingDarkBlue}}
+  {}
+  {0em}
+  {}
+
+\titleformat{\subsubsection}
+  {\bfseries\normalsize\color{ScoutingDarkBlue}}
+  {}
+  {0em}
+  {}
+
+% Table styling
+\arrayrulecolor{ScoutingDarkBlue}
+
+% Hyperlink styling
+\hypersetup{
+  colorlinks=true,
+  linkcolor=ScoutingDarkBlue,
+  urlcolor=ScoutingDarkBlue,
+  pdfborder={0 0 0}
+}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{ScoutingDarkBlue}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{ScoutingWarmGray}\leftmark}
+\fancyfoot[C]{\small\color{ScoutingWarmGray}\thepage}
+
+% Ensure first page also has header/footer
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.5pt}
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{ScoutingDarkBlue}\leaders\hrule height \headrulewidth\hfill}}
+  \fancyhead[L]{\small\color{ScoutingWarmGray}\leftmark}
+  \fancyfoot[C]{\small\color{ScoutingWarmGray}\thepage}
+}
+
+% Pandoc-generated tightlist command
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Document
+\begin{document}
+
+$body$
+
+\end{document}
