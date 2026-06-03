@@ -1,4 +1,5 @@
 ---
+type: policy
 title: "Pack 413 Policies"
 subtitle: "Policies and Procedures for Pack 413"
 date: "Last Revised: 12/03/2025"

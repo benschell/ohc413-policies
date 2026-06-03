@@ -10,25 +10,27 @@ const __dirname = dirname(__filename);
 
 const PROJECT_ROOT = join(__dirname, '..', '..');
 const DOCS_DIR = join(PROJECT_ROOT, 'docs');
-const OUTPUT_DIR = join(PROJECT_ROOT, 'output');
-const HEADER_PATH = join(__dirname, '..', 'header.tex');
+const HEADERS_DIR = join(__dirname, '..');
+
+const force = process.argv.includes('--force');
 
 async function main() {
-  console.log('🔄 Converting markdown policies to PDF...\n');
+  console.log('Converting markdown documents to PDF...\n');
   console.log(`Docs directory: ${DOCS_DIR}`);
-  console.log(`Output directory: ${OUTPUT_DIR}`);
-  console.log(`Header file: ${HEADER_PATH}\n`);
+  if (force) console.log('Force mode: ignoring content hashes');
+  console.log('');
 
   try {
-    const results = await convertAllMarkdownFiles(DOCS_DIR, OUTPUT_DIR, HEADER_PATH);
+    const results = await convertAllMarkdownFiles(DOCS_DIR, '', HEADERS_DIR, force);
 
-    const successCount = results.filter((r) => r.success).length;
-    const failCount = results.filter((r) => !r.success).length;
+    const succeeded = results.filter(r => r.success && !r.skipped).length;
+    const skipped = results.filter(r => r.skipped).length;
+    const failed = results.filter(r => !r.success).length;
 
     console.log('━'.repeat(50));
-    console.log(`✓ Conversions completed: ${successCount} succeeded, ${failCount} failed`);
+    console.log(`Done: ${succeeded} converted, ${skipped} skipped, ${failed} failed`);
 
-    if (failCount > 0) {
+    if (failed > 0) {
       process.exit(1);
     }
   } catch (error) {

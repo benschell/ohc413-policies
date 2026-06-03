@@ -1,7 +1,8 @@
 ---
+type: policy
 title: "Troop 413 Policies"
 subtitle: "Policies and Procedures for Troop 413"
-date: "Last Revised: [DATE]"
+date: "Last Revised: 05/06/2026"
 ---
 
 ## Introduction
@@ -22,19 +23,7 @@ If any statements within this document are found to be in conflict with any poli
 
 ## Members of the Committee
 
-A Troop Committee Member is defined as any adult volunteer who is officially registered with Scouting America in the role of Troop Committee Member and is current on all required training (including position-specific training and Safeguarding Youth policies). All registered Committee Members are invited to attend and provide input during Committee meetings.
-
----
-
-## Active Committee Members
-
-Official Committee meeting minutes, agendas, and sensitive business documents shall be distributed exclusively to Active Committee Members to ensure focused communication and appropriate handling of committee business.
-
-An individual is considered an Active Committee Member if they meet one of the following criteria:
-
-- They currently hold a named, designated Troop Committee officer role (e.g., Committee Chair, Treasurer, Secretary, Advancement Chair).
-- They were recorded as present during the meeting for which the documents are being distributed.
-- They have attended two out of the last four of the Committee's regularly scheduled meetings, demonstrating sustained engagement.
+A Troop Committee Member is defined as any adult volunteer who is officially registered with Scouting America in the role of Troop Committee Member and is current on all required training (including position-specific training and Safeguarding Youth policies) within 60 days of expiration or assignment. All registered Committee Members are invited to attend and provide input during Committee meetings.
 
 ---
 
@@ -42,35 +31,56 @@ An individual is considered an Active Committee Member if they meet one of the f
 
 The Committee shall maintain a structured operating style to ensure clear accountability, transparency, and efficient management of all Troop activities and resources.
 
-- **Quorum:** Quorum, necessary to commence or conduct business, requires a simple majority (more than fifty percent) of all active, eligible Committee members to be present.
-- **Voting Standard:** All motions, decisions, and approvals are determined by a simple majority vote of the members present, provided that quorum is met.
-- **Key Approvals:** Approval of all meeting minutes, financial expenditures, dispute resolutions, and policy decisions shall be secured by a simple majority vote of members present after quorum has been established.
+- **Voting Members:** Those eligible to vote on Committee operations are the Committee Chair and all Committee Members as defined above.
+- **Quorum:** Quorum, necessary to commence or conduct business, requires a the presence of a simple majority (more than fifty percent) of all possible Voting Members.
+- **Voting Standard:** All motions, decisions, and approvals are determined by a simple majority vote of the Voting Members present, provided that quorum is met.
+- **Key Approvals:** Approval of all meeting minutes, financial expenditures, dispute resolutions, and policy decisions shall be secured by a simple majority vote of Voting Members present after quorum has been established.
+
+Committee Members who do not attend at least two out of the last four of the Committee's regularly scheduled meetings will be considered inactive and have their registrion moved to Scouting Reserve. Individuals who have been shifted to Scouting Reserve due to inactivity can be eligible for restoration to Committee Member by attending at least two of the last four of the Committee's regularly scheduled meetings.
 
 ---
 
 ## Committee Term Limits
 
-The Committee establishes specific terms for adult volunteer roles to ensure stability and routine leadership refreshment. A Program Year is defined as July 1 through June 30.
+The Committee establishes specific terms for adult volunteer roles to ensure stability and routine leadership refreshment. 
 
-- **Committee Chairperson:** The Chair is appointed to a one program year term and serves at the pleasure of the Chartering Organization. The Chair may be considered for additional one-year terms upon a motion and simple majority vote of the Committee, pending final approval from the Chartering Organization.
-- **General Committee Roles (e.g., Treasurer, Secretary, Advancement Chair):** All general Committee members volunteering for these roles are expected to commit to a one program year term. Members are encouraged to serve continuous terms, renewing their commitment annually with the Troop Committee at the start of each Program Year.
+- **Committee Chairperson:** The Chair is appointed to a one year term and serves at the pleasure of the Chartering Organization. The Chair may be considered for additional one-year terms upon a motion and simple majority vote of the Committee, pending final approval from the Chartering Organization.
+- **Functional Roles (e.g., Treasurer, Secretary, Advancement Chair):** Adults volunteering for these functional roles are expected to commit to a one year term. Volunteers are encouraged to serve continuous terms, renewing their commitment annually with the Troop Committee.
 
 ---
 
-## Official Committee Role Descriptions / Expectations
+## Official Functional Role Descriptions / Expectations
+
+Scouting America's registration systems has several Registered Positions as well as a series of Functional Roles. Troop 413 has defined additional Functional Roles to support operation of the unit. Holding a Functional Role in support of the unit does not confer committee voting rights for the individual. Functional Roles below annotated with \[SA\] are explicitly listed in the Scouting America "Position Manager"; the rest are unlisted.
+
+Troop 413 recognizes two categories of Functional Roles:
+
+1. **Committee-Required Roles** — These roles must be filled by a Committee Member due to the nature of their responsibilities (e.g., fiduciary duties, official record-keeping, advancement oversight).
+2. **Open Roles** — It is preferred that these roles are filled by a Committee Member, but due to volunteer availability constraints, may be filled by any registered adult.
 
 *Estimated time commitments do not include committee meeting attendance time.*
+
+### Committee-Required Roles
+
+These roles must be held by a Committee Member.
 
 | Role | Role Description |
 |------|-----------------|
 | **Secretary** | Keep meeting and attendance records for committee meetings; report minutes from prior meeting. *Time Commitment: 1h / month* |
-| **Treasurer** | Handle troop funds; make appropriate payments as needed (e.g. reimbursements, unit charter, event registrations); provide financial report at meetings. *Time Commitment: 1-2h / month* |
-| **Quartermaster** | Manage and maintain an inventory of troop equipment and gear; coordinate equipment checkout and return for troop events; identify equipment needs and bring recommendations to the committee. *Time Commitment: 1-2h / month, variable around campouts* |
-| **Advancement** | Coach / support Scoutmasters and parents on inputting advancement into Scoutbook / IA; create and manage an inventory of awards on hand; create and manage the PO ahead of award ceremonies; coordinate procuring awards; validate / track after award ceremonies. *Time Commitment: 2h / month* |
-| **Activities** | Work with troop leadership to plan / coordinate special event activities (e.g. Courts of Honor, Eagle ceremonies); determine themes, scripts, etc.; manage requirements (e.g. meal signups); communicate upcoming events to parents. *Time Commitment: 2h / month* |
+| **Treasurer** \[SA\] | Handle troop funds; make appropriate payments as needed (e.g. reimbursements, unit charter, event registrations); provide financial report at meetings. *Time Commitment: 1-2h / month* |
+| **Advancement** \[SA\] | Coach / support Scoutmasters and parents on inputting advancement into Scoutbook / IA; create and manage an inventory of awards on hand; create and manage the PO ahead of award ceremonies; coordinate procuring awards; validate / track after award ceremonies. *Time Commitment: 2h / month* |
+
+### Open Roles
+
+It is preferred that these roles are held by a Committee Member but may be filled by any registered adult.
+
+| Role | Role Description |
+|------|-----------------|
+| **Activities** \[SA\] | Work with troop leadership to plan / coordinate special event activities (e.g. Courts of Honor, Eagle ceremonies); determine themes, scripts, etc.; manage requirements (e.g. meal signups); communicate upcoming events to parents. *Time Commitment: 2h / month* |
 | **Fundraising** | Coordinate fundraising opportunities (e.g. Popcorn/Peanut, Camp Cards); obtain relevant permissions for non-council-organized events; work with Treasurer to handle funds appropriately. *Time Commitment: variable depending on season and fundraiser* |
+| **Quartermaster** | Manage and maintain an inventory of troop equipment and gear; coordinate equipment checkout and return for troop events; identify equipment needs and bring recommendations to the committee. *Time Commitment: 1-2h / month, variable around campouts* |
 | **Recordkeeping** | Manage records for activities (med forms, permission slips, etc.); ensure compliance ahead of activities. *Time Commitment: < 1h / month on average, some extra work around activities* |
-| **Training** | Communicate required (for leaders) and available training (for leaders and parents); ensure compliance ahead of activities. *Time Commitment: < 1h / month* |
+| **Training** \[SA\] | Communicate required (for leaders) and available training (for leaders and parents); ensure compliance ahead of activities. *Time Commitment: < 1h / month* |
 
 ---
 
@@ -80,7 +90,7 @@ The purpose of this policy is to establish clear guidelines and procedures for t
 
 ### 1. Authorized Signers
 
-The Troop 413 bank account shall have a minimum of three (3) and a maximum of four (4) authorized active registered adult signers at all times. Changes to authorized signers require approval by the Troop Committee and must be promptly updated with the financial institution. Spouses/partners of the Treasurer shall not be an authorized signer.
+The Troop 413 bank account shall have a minimum of three (3) and a maximum of four (4) authorized active registered adult signers at all times. Changes to authorized signers require approval by the Troop Committee and must be promptly updated with the financial institution. No two members of the same household may be authorized signers.
 
 ### 2. Check Writing and Disbursements
 
@@ -105,8 +115,8 @@ The Troop 413 bank account shall have a minimum of three (3) and a maximum of fo
 
 ### 5. Record Keeping and Reconciliation
 
-- The Treasurer is responsible for maintaining accurate and up-to-date financial records for all income and expenditures using the unit's designated accounting software.
-- Bank statements shall be reconciled in a timely manner by the Treasurer.
+- The Treasurer is responsible for maintaining accurate and up-to-date financial records for all income and expenditures in all accounts using the unit's designated accounting software.
+- All accounts shall be reconciled in a timely manner by the Treasurer.
 - A second authorized signer (not the Treasurer) should review the monthly bank reconciliation and initial it to confirm their review.
 - All financial records, including bank statements, cancelled checks, deposit slips, receipts, and invoices, shall be retained in an organized manner for a minimum of seven (7) years, or as required by applicable tax laws and Scouting America policies.
 
@@ -227,4 +237,4 @@ All visiting youth and their accompanying parent/guardian must check-in upon arr
 
 ## Revision History
 
-- **[DATE]** - Initial version
+- **05/06/2026** - Initial version (v1); approved as-written by the Troop Committee.
