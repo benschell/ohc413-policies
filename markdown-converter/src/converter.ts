@@ -45,7 +45,72 @@ interface PolicyFrontmatter {
   date?: string;
 }
 
-type Frontmatter = AgendaFrontmatter | PolicyFrontmatter;
+interface FormUnit {
+  name: string;
+  email?: string;
+  legal_name?: string;
+  /** Extra per-unit template variables, usable as {{key}} in the body. */
+  vars?: Record<string, string>;
+}
+
+interface FormField {
+  /** A heading entry starts a new field group (and forces a row break). */
+  heading?: string;
+  label?: string;
+  /** Fraction of the text width this field occupies (default 1.0). */
+  width?: number;
+  type?: 'text' | 'signature' | 'date' | 'checkbox';
+  /** Override the field box height (e.g. "26pt") for write-in answers. */
+  height?: string;
+  /** Put the label on its own line above a full-width box. */
+  stacked?: boolean;
+  /** AcroForm field name; defaults to a slug of the label. */
+  name?: string;
+  /** Force this field onto a new row. */
+  break?: boolean;
+}
+
+interface FormFrontmatter {
+  type: 'form';
+  title: string;
+  units: (string | FormUnit)[];
+  address?: string;
+  email?: string;
+  revision?: string | Date;
+  /** Override the auto-sized title point size. */
+  title_size?: number;
+  fields: FormField[];
+}
+
+type Frontmatter = AgendaFrontmatter | PolicyFrontmatter | FormFrontmatter;
+
+// --- Unit profiles ---
+// Branding that belongs to the unit rather than to any one document.
+interface UnitProfile {
+  legalName: string;
+  headerImage: string;
+  barColor: string;
+  /** Unit-level vocabulary: a Pack has Dens, a Troop has Patrols. */
+  subunit: string;
+  youth: string;
+}
+
+const UNIT_PROFILES: Record<'pack' | 'troop', (unit: string) => UnitProfile> = {
+  pack: unit => ({
+    legalName: `Scouting America Cub Scout ${unit}`,
+    headerImage: 'pack-header.png',
+    barColor: 'ScoutingDarkBlue',
+    subunit: 'Den',
+    youth: 'Cub Scout',
+  }),
+  troop: unit => ({
+    legalName: `Scouting America Scouts BSA ${unit}`,
+    headerImage: 'troop-header.png',
+    barColor: 'ScoutingTan',
+    subunit: 'Patrol',
+    youth: 'Scout',
+  }),
+};
 
 // --- Hashing ---
 
@@ -269,6 +334,221 @@ function preprocessAgenda(fm: AgendaFrontmatter, body: string, assetsDir: string
   return lines.join('\n');
 }
 
+// --- Form building ---
+
+interface FormContext {
+  unit: string;
+  org: string;
+  address: string;
+  email: string;
+  title: string;
+  subunit: string;
+  youth: string;
+  [key: string]: string;
+}
+
+function resolveFormUnit(entry: string | FormUnit, fm: FormFrontmatter): FormContext {
+  const unit = typeof entry === 'string' ? entry : entry.name;
+  const overrides: Partial<FormUnit> = typeof entry === 'string' ? {} : entry;
+  const profile = UNIT_PROFILES[unitType(unit)](unit);
+  return {
+    ...(overrides.vars ?? {}),
+    unit,
+    org: overrides.legal_name ?? profile.legalName,
+    address: fm.address ?? '',
+    email: overrides.email ?? fm.email ?? '',
+    title: fm.title,
+    subunit: profile.subunit,
+    youth: profile.youth,
+  };
+}
+
+/** Replace {{unit}}, {{org}}, {{subunit}}, ... and any per-unit `vars`. */
+function applyTemplate(text: string, ctx: FormContext): string {
+  return text.replace(/\{\{(\w+)\}\}/g, (match, key: string) =>
+    ctx[key] === undefined ? match : ctx[key]
+  );
+}
+
+function fieldName(field: FormField, index: number, used: Set<string>): string {
+  const slug = (field.label ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  const base = field.name ?? (slug || `field${index}`);
+  let name = base;
+  let n = 2;
+  while (used.has(name)) name = `${base}_${n++}`;
+  used.add(name);
+  return name;
+}
+
+interface FieldGroup {
+  /** Slug of the group heading; used by {{fields:slug}} placeholders. */
+  key: string;
+  latex: string;
+}
+
+function buildFieldGroups(fields: FormField[], ctx: FormContext): FieldGroup[] {
+  const groups: FieldGroup[] = [];
+  const used = new Set<string>();
+  let group: string[] = [];
+  let groupKey = '';
+  let row: string[] = [];
+  let rowWidth = 0;
+
+  const flushRow = () => {
+    if (row.length === 0) return;
+    group.push(row.join('\\hfill%\n'));
+    group.push('\\par\\formrowgap');
+    row = [];
+    rowWidth = 0;
+  };
+
+  // Each heading starts a new group, and a group is boxed so a page break can
+  // never separate a heading from its fields (or split a row of fields).
+  const flushGroup = () => {
+    flushRow();
+    if (group.length === 0) return;
+    groups.push({
+      key: groupKey || `group${groups.length + 1}`,
+      latex: ['\\begin{minipage}{\\textwidth}', ...group, '\\end{minipage}\\par'].join('\n'),
+    });
+    group = [];
+    groupKey = '';
+  };
+
+  fields.forEach((field, index) => {
+    if (field.heading) {
+      const heading = applyTemplate(field.heading, ctx);
+      flushGroup();
+      groupKey = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      group.push(`\\formgroupheading{${escapeLatex(heading)}}`);
+      return;
+    }
+
+    const width = field.width ?? 1.0;
+    // Flow left-to-right, wrapping when the row is full (small epsilon so
+    // widths like 0.5 + 0.5 still share a row).
+    if (field.break || rowWidth + width > 1.001) flushRow();
+
+    const label = escapeLatex(applyTemplate(field.label ?? '', ctx));
+    const name = fieldName(field, index, used);
+
+    if (field.type === 'checkbox') {
+      row.push(`\\formcheckbox{${name}}{${label}}{${width}}`);
+    } else {
+      const height = field.height ?? (field.type === 'signature' ? '18pt' : '14pt');
+      const macro = field.stacked ? 'formfieldstacked' : 'formfield';
+      row.push(`\\${macro}{${name}}{${label}}{${width}}{${height}}`);
+    }
+    rowWidth += width;
+  });
+
+  flushGroup();
+  return groups;
+}
+
+function buildFormMasthead(
+  ctx: FormContext,
+  unit: string,
+  assetsDir: string,
+  titleSize?: number
+): string {
+  const profile = UNIT_PROFILES[unitType(unit)](unit);
+  const lines: string[] = [];
+
+  const imagePath = join(assetsDir, profile.headerImage);
+  if (existsSync(imagePath)) {
+    lines.push('{\\centering');
+    lines.push(`\\includegraphics[width=\\textwidth]{${imagePath}}%`);
+    lines.push('\\par}');
+    lines.push('\\vspace{0.4em}');
+  }
+
+  lines.push(
+    '{\\centering\\robotoserifbold\\fontsize{13}{16}\\selectfont ' +
+      escapeLatex(ctx.org.toUpperCase()) +
+      '\\par}'
+  );
+  for (const line of [ctx.address, ctx.email].filter(Boolean)) {
+    lines.push(
+      '{\\centering\\fontsize{11}{14}\\selectfont ' + escapeLatex(line) + '\\par}'
+    );
+  }
+
+  // Long titles drop a size so they still set on one line.
+  const size = titleSize ?? (ctx.title.length > 44 ? 16 : 20);
+  lines.push('\\vspace{0.6em}');
+  lines.push(
+    `{\\centering\\robotoserifbold\\fontsize{${size}}{${Math.round(size * 1.2)}}\\selectfont ` +
+      escapeLatex(ctx.title) +
+      '\\par}'
+  );
+  lines.push('\\vspace{0.45em}');
+
+  return lines.join('\n');
+}
+
+function preprocessForm(fm: FormFrontmatter, body: string, entry: string | FormUnit, assetsDir: string): string {
+  const ctx = resolveFormUnit(entry, fm);
+  const profile = UNIT_PROFILES[unitType(ctx.unit)](ctx.unit);
+
+  const footerBits = [ctx.unit, fm.title];
+  if (fm.revision) footerBits.push(`Rev. ${formatDate(fm.revision)}`);
+  const footer = footerBits.map(escapeLatex).join('~~\\textbar{}~~');
+
+  const lines: string[] = [];
+  lines.push(rawLatex(`\\setformmeta{${profile.barColor}}{${footer}}`));
+  lines.push('');
+  lines.push(rawLatex(buildFormMasthead(ctx, ctx.unit, assetsDir, fm.title_size)));
+  lines.push('');
+
+  const groups = buildFieldGroups(fm.fields ?? [], ctx);
+  const placed = new Set<string>();
+  let templatedBody = applyTemplate(body.trim(), ctx);
+
+  // {{fields:some-heading}} drops one group at that point in the body, so a
+  // form can put contact fields above the release language and signatures
+  // below it. A bare {{fields}} takes whatever groups are left over.
+  templatedBody = templatedBody.replace(/\{\{fields:([a-z0-9-]+)\}\}/g, (match, key: string) => {
+    const group = groups.find(g => g.key === key);
+    if (!group) {
+      console.warn(`  Warning: {{fields:${key}}} has no matching field group`);
+      return '';
+    }
+    placed.add(key);
+    return `\n\n${rawLatex(group.latex)}\n\n`;
+  });
+
+  const remaining = groups.filter(g => !placed.has(g.key));
+  const remainingBlock = remaining.map(g => rawLatex(g.latex)).join('\n\n');
+
+  if (templatedBody.includes('{{fields}}')) {
+    const [before, after] = templatedBody.split('{{fields}}');
+    lines.push(before.trim());
+    lines.push('');
+    lines.push(remainingBlock);
+    lines.push('');
+    lines.push(after.trim());
+  } else {
+    lines.push(templatedBody);
+    if (remaining.length > 0) {
+      lines.push('');
+      lines.push(rawLatex('\\vspace{1.5em}'));
+      lines.push('');
+      lines.push(remainingBlock);
+    }
+  }
+
+  return lines.join('\n');
+}
+
+function formOutputPath(defaultOutputPath: string, title: string, unit: string): string {
+  const slug = (s: string) => s.trim().replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  return join(dirname(defaultOutputPath), `${slug(title)}_${slug(unit)}.pdf`);
+}
+
 // --- Conversion ---
 
 function convertFile(
@@ -301,7 +581,9 @@ function convertFile(
       error: error instanceof Error ? error.message : String(error),
     };
   } finally {
-    if (tempContent && existsSync(sourcePath)) {
+    // KEEP_TMP=1 leaves the generated markdown+LaTeX next to the source for
+    // debugging what the preprocessors actually emitted.
+    if (tempContent && !process.env.KEEP_TMP && existsSync(sourcePath)) {
       unlinkSync(sourcePath);
     }
   }
@@ -312,32 +594,57 @@ export function convertMarkdownToPdf(
   outputPath: string,
   headersDir: string,
   force: boolean = false
-): ConversionResult {
+): ConversionResult[] {
   const content = readFileSync(inputPath, 'utf-8');
   const { frontmatter, body } = parseFrontmatter(content);
 
   if (!frontmatter?.type) {
     console.log(`  Skipping (no type in frontmatter)`);
-    return { inputPath, outputPath, success: true, skipped: true };
+    return [{ inputPath, outputPath, success: true, skipped: true }];
   }
 
   const docType = frontmatter.type;
+  const assetsDir = join(headersDir, 'assets');
 
-  const headerFileName = docType === 'agenda' ? 'agenda-header.tex' : 'header.tex';
+  const headerFileName =
+    docType === 'agenda' ? 'agenda-header.tex'
+    : docType === 'form' ? 'form-header.tex'
+    : 'header.tex';
   const headerPath = join(headersDir, headerFileName);
   const headerContent = readFileSync(headerPath, 'utf-8');
+
+  // A form renders one PDF per unit; everything else renders exactly one.
+  if (docType === 'form') {
+    const fm = frontmatter as FormFrontmatter;
+    const args = '-V geometry:top=0.7in,left=0.75in,right=0.75in,bottom=0.8in -V fontsize=11pt -V colorlinks=true -V linkcolor=ScoutingDarkBlue -V urlcolor=ScoutingDarkBlue';
+
+    return (fm.units ?? []).map(entry => {
+      const unit = typeof entry === 'string' ? entry : entry.name;
+      const unitOutputPath = formOutputPath(outputPath, fm.title, unit);
+      const contentHash = computeHash([content, headerContent, docType, unit]);
+
+      if (!force && isUnchanged(unitOutputPath, contentHash)) {
+        console.log(`  Skipping ${unit} (unchanged)`);
+        return { inputPath, outputPath: unitOutputPath, success: true, skipped: true };
+      }
+
+      const processed = preprocessForm(fm, body, entry, assetsDir);
+      const result = convertFile(inputPath, unitOutputPath, headerPath, args, processed);
+      if (result.success) writeHash(unitOutputPath, contentHash);
+      return result;
+    });
+  }
 
   const contentHash = computeHash([content, headerContent, docType]);
   if (!force && isUnchanged(outputPath, contentHash)) {
     console.log(`  Skipping (unchanged)`);
-    return { inputPath, outputPath, success: true, skipped: true };
+    return [{ inputPath, outputPath, success: true, skipped: true }];
   }
 
   let result: ConversionResult;
 
   if (docType === 'agenda') {
     const fm = frontmatter as AgendaFrontmatter;
-    const assetsDir = join(headersDir, 'assets');
     const processed = preprocessAgenda(fm, body, assetsDir);
     const args = '-V geometry:top=0.9in,left=0.5in,right=0.5in,bottom=2in -V fontsize=11pt -V colorlinks=true -V linkcolor=ScoutingDarkBlue -V urlcolor=ScoutingDarkBlue';
     result = convertFile(inputPath, outputPath, headerPath, args, processed);
@@ -350,7 +657,7 @@ export function convertMarkdownToPdf(
     writeHash(outputPath, contentHash);
   }
 
-  return result;
+  return [result];
 }
 
 export async function findMarkdownFiles(docsDir: string): Promise<string[]> {
@@ -384,19 +691,21 @@ export async function convertAllMarkdownFiles(
     const fileName = basename(inputPath);
 
     console.log(`Converting: ${fileName}...`);
-    const result = convertMarkdownToPdf(inputPath, outputPath, headersDir, force);
+    const fileResults = convertMarkdownToPdf(inputPath, outputPath, headersDir, force);
 
-    if (result.skipped) {
-      // already logged
-    } else if (result.success) {
-      console.log(`  Created: ${relative(process.cwd(), outputPath)}`);
-    } else {
-      console.error(`  Failed: ${fileName}`);
-      console.error(`  Error: ${result.error}`);
+    for (const result of fileResults) {
+      if (result.skipped) {
+        // already logged
+      } else if (result.success) {
+        console.log(`  Created: ${relative(process.cwd(), result.outputPath)}`);
+      } else {
+        console.error(`  Failed: ${fileName}`);
+        console.error(`  Error: ${result.error}`);
+      }
     }
     console.log('');
 
-    results.push(result);
+    results.push(...fileResults);
   }
 
   return results;

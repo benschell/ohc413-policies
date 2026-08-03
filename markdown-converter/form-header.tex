@@ -1,0 +1,173 @@
+% Scouting America Brand Colors
+\definecolor{ScoutingRed}{HTML}{CE1126}
+\definecolor{ScoutingDarkBlue}{HTML}{173E82}
+\definecolor{ScoutingWarmGray}{HTML}{515354}
+\definecolor{ScoutingTan}{HTML}{D4CEC0}
+\definecolor{ScoutingTitle}{HTML}{675D49}
+
+% Per-unit branding, set by the converter via \setformmeta{bar color}{footer}.
+% These must be \gdef: the whole document sits inside the AcroForm group (see
+% \AtBeginDocument below), and the last page ships out after that group closes,
+% so a local \renewcommand would have already been rolled back.
+\providecommand{\formbarcolor}{ScoutingDarkBlue}
+\providecommand{\formfooterleft}{}
+\newcommand{\setformmeta}[2]{\gdef\formbarcolor{#1}\gdef\formfooterleft{#2}}
+
+% Fonts
+\usepackage{fontspec}
+\setmainfont{Open Sans}[
+  Weight=400,
+  BoldFont={Open Sans},
+  BoldFeatures={Weight=700},
+  ItalicFont={Open Sans Italic},
+  BoldItalicFont={Open Sans Italic},
+  BoldItalicFeatures={Weight=700}
+]
+\color{ScoutingTitle}
+
+\newfontfamily\roboto{Roboto}[
+  Weight=400,
+  BoldFont={Roboto},
+  BoldFeatures={Weight=700}
+]
+
+\newfontfamily\robotoserif{Roboto Serif}[
+  Weight=400,
+  BoldFont={Roboto Serif},
+  BoldFeatures={Weight=700}
+]
+
+\newfontfamily\robotoserifbold{Roboto Serif}[Weight=700]
+
+% Line height and paragraph spacing
+\usepackage{setspace}
+\setstretch{1.1}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+
+% Section headings: Roboto 13pt
+\usepackage{titlesec}
+\titleformat{\section}
+  {\roboto\fontsize{13}{16}\selectfont\color{ScoutingDarkBlue}}
+  {}
+  {0em}
+  {}
+\titlespacing*{\section}{0pt}{1.2em}{0.5em}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{leftmargin=1.5em, labelsep=0.5em, itemsep=3pt, parsep=1pt}
+\setlist[enumerate,1]{leftmargin=1.5em, labelsep=0.5em, itemsep=3pt, parsep=1pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{3pt}\setlength{\parskip}{2pt}}
+
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{pifont}
+
+% --- Fillable form fields -------------------------------------------------
+% Fields are real AcroForm widgets (typeable in any PDF reader) drawn with an
+% underline border, so the same PDF also prints as a normal fill-in-by-hand
+% form. Keep hyperref last-ish: it patches a lot of internals.
+\usepackage[hidelinks]{hyperref}
+
+% hyperref wants an RGB triple, not a named color.
+\providecommand{\formbordercolor}{0.09 0.243 0.51}
+
+\newlength{\ffboxw}
+\newlength{\fflabelw}
+\newlength{\fffieldw}
+
+% \formfield{name}{label}{width fraction}{height}
+\newcommand{\formfield}[4]{%
+  \setlength{\ffboxw}{#3\textwidth}%
+  \settowidth{\fflabelw}{\textbf{#2:}}%
+  \setlength{\fffieldw}{\ffboxw - \fflabelw - 0.5em}%
+  \makebox[\ffboxw][l]{%
+    \textbf{#2:}\hspace{0.5em}%
+    \TextField[
+      name=#1,
+      width=\fffieldw,
+      height=#4,
+      borderstyle=U,
+      borderwidth=1,
+      bordercolor={\formbordercolor},
+      backgroundcolor={},
+      color={\formbordercolor},
+      charsize=10pt
+    ]{}%
+  }%
+}
+
+% \formfieldstacked{name}{label}{width fraction}{height}
+% Label on its own line above a full-width box — for long labels where an
+% inline field would leave no room to write.
+\newcommand{\formfieldstacked}[4]{%
+  \begin{minipage}[t]{#3\textwidth}%
+    \textbf{#2:}\par\vspace{0.2em}%
+    \TextField[
+      name=#1,
+      width=#3\textwidth,
+      height=#4,
+      borderstyle=U,
+      borderwidth=1,
+      bordercolor={\formbordercolor},
+      backgroundcolor={},
+      color={\formbordercolor},
+      charsize=10pt
+    ]{}%
+  \end{minipage}%
+}
+
+% \formcheckbox{name}{label}{width fraction}
+\newcommand{\formcheckbox}[3]{%
+  \begin{minipage}[t]{#3\textwidth}%
+    \setlength{\parindent}{0pt}%
+    \hangindent=1.6em\hangafter=1%
+    \CheckBox[
+      name=#1,
+      width=10pt,
+      height=10pt,
+      bordercolor={\formbordercolor},
+      backgroundcolor={},
+      checkboxsymbol=\ding{51}
+    ]{}\hspace{0.6em}#2%
+  \end{minipage}%
+}
+
+% Heading above a group of fields
+\newcommand{\formgroupheading}[1]{%
+  \vspace{0.6em}%
+  {\roboto\fontsize{11}{13}\selectfont\bfseries\color{ScoutingDarkBlue}\MakeUppercase{#1}\par}%
+  \vspace{0.3em}%
+}
+
+% Vertical gap between field rows
+\newcommand{\formrowgap}{\vspace{1.05em}}
+
+% --- Page furniture -------------------------------------------------------
+\usepackage{fancyhdr}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{4pt}
+  \renewcommand{\footrule}{\color{\formbarcolor}\hrule height 4pt}
+  \fancyfoot[L]{\fontsize{8}{10}\selectfont\color{ScoutingWarmGray}\formfooterleft}
+  \fancyfoot[R]{\fontsize{8}{10}\selectfont\color{ScoutingWarmGray}\thepage}
+}
+
+\fancypagestyle{fancy}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{4pt}
+  \renewcommand{\headrule}{\color{\formbarcolor}\hrule height 4pt}
+  \renewcommand{\footrulewidth}{4pt}
+  \renewcommand{\footrule}{\color{\formbarcolor}\hrule height 4pt}
+  \fancyfoot[L]{\fontsize{8}{10}\selectfont\color{ScoutingWarmGray}\formfooterleft}
+  \fancyfoot[R]{\fontsize{8}{10}\selectfont\color{ScoutingWarmGray}\thepage}
+}
+
+\pagestyle{plain}
+
+% Wrap the whole document in an AcroForm so \TextField/\CheckBox work anywhere.
+\AtBeginDocument{\begin{Form}}
+\AtEndDocument{\end{Form}}

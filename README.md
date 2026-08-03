@@ -7,7 +7,9 @@ Policy documents, committee meeting agendas, and minutes for Pack 413 and Troop 
 - `docs/` - Source markdown documents
   - `pack/` - Pack 413 policies, agendas, and minutes
   - `troop/` - Troop 413 policies, agendas, and minutes
+  - `forms/` - Unit forms (one source, one PDF per unit)
   - `agenda-format.md` - Schema reference for agenda markdown files
+  - `form-format.md` - Schema reference for form markdown files
 - `markdown-converter/` - TypeScript tool for converting markdown to PDF
 - `prior-art/` - Reference documents (will be removed once finalized)
 
@@ -30,6 +32,7 @@ All markdown files use a `type` field in YAML frontmatter to control conversion:
 
 - **`policy`** — Policy documents. Converted with table of contents.
 - **`agenda`** — Committee meeting agendas. Converted with header image, colored bars, optional QR code sidebar, and roles footer table. See [`docs/agenda-format.md`](docs/agenda-format.md) for the full schema.
+- **`form`** — Unit forms. Declarative fill-in fields become real AcroForm widgets, so each PDF is both fillable on screen and printable for signing. One source generates one PDF per unit listed. See [`docs/form-format.md`](docs/form-format.md) for the full schema.
 
 ## Converting Documents to PDF
 

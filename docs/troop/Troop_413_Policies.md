@@ -2,7 +2,7 @@
 type: policy
 title: "Troop 413 Policies"
 subtitle: "Policies and Procedures for Troop 413"
-date: "Last Revised: 05/06/2026"
+date: "Last Revised: 06/03/2026"
 ---
 
 ## Introduction
@@ -37,6 +37,21 @@ The Committee shall maintain a structured operating style to ensure clear accoun
 - **Key Approvals:** Approval of all meeting minutes, financial expenditures, dispute resolutions, and policy decisions shall be secured by a simple majority vote of Voting Members present after quorum has been established.
 
 Committee Members who do not attend at least two out of the last four of the Committee's regularly scheduled meetings will be considered inactive and have their registrion moved to Scouting Reserve. Individuals who have been shifted to Scouting Reserve due to inactivity can be eligible for restoration to Committee Member by attending at least two of the last four of the Committee's regularly scheduled meetings.
+
+---
+
+## Remote Meeting Attendance
+
+Committee meetings are conducted in person by default. To protect the confidentiality of committee business and to keep discussion focused and effective, the Committee does **not** permit partial remote attendance: individual members may not call in or otherwise participate remotely while a meeting is being held in person.
+
+When circumstances prevent enough members from attending in person to establish quorum, the Committee may instead convene the meeting **fully remotely**, provided that:
+
+- A quorum of Voting Members is able to participate remotely; and
+- The meeting is conducted entirely by remote means, with no in-person gathering held in parallel.
+
+This "all-or-nothing" approach ensures every participant shares the same meeting format — either all in person or all remote. It avoids the confidentiality risks and the communication difficulties that can arise when only a subset of members attends remotely.
+
+The decision to convert a scheduled in-person meeting to a fully remote meeting rests with the Committee Chair, who should notify members as far in advance as is practical.
 
 ---
 
@@ -124,6 +139,16 @@ The Troop 413 bank account shall have a minimum of three (3) and a maximum of fo
 
 - The Treasurer shall provide a financial report to the Troop Committee at each regular committee meeting, detailing income, expenditures, and current account balances.
 - An annual financial report shall be presented to the Troop Committee and made available to all parents/guardians.
+
+### 7. Electronic and Card-Based Payments
+
+To offer families a convenient way to pay for summer camp, event registrations, dues, and other Scouting costs owed on behalf of their Scout, the Troop may accept payments through a card-based electronic payment platform (e.g., Square) in addition to cash and check.
+
+- A flat convenience fee of five percent (5%) shall be added to card-based payments to offset the payment processor's fees and the associated card-handling costs.
+- **Fundraising sales to the public are excluded.** This fee does **not** apply to fundraising sales to the public or supporters (e.g., camp cards, popcorn, meal fundraisers). Pricing for those is set as part of each fundraiser and is not subject to the convenience fee.
+- Cash and check payments are not subject to this fee.
+- The fee shall be clearly disclosed to the payer at the time of the transaction.
+- All electronic payments are subject to the same deposit, record-keeping, and reconciliation standards described in the Troop policy document.
 
 ---
 
@@ -237,4 +262,6 @@ All visiting youth and their accompanying parent/guardian must check-in upon arr
 
 ## Revision History
 
+- **07/08/2026** - (v3) Added the *Electronic and Card-Based Payments* subsection to the *Money Handling* section; approved by the Troop Committee on 07/08/2026.
+- **06/03/2026** - (v2) Added the *Remote Meeting Attendance* policy; approved as-written by the Troop Committee on 06/03/2026.
 - **05/06/2026** - Initial version (v1); approved as-written by the Troop Committee.
