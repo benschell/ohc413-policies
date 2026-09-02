@@ -1,3 +1,10 @@
+---
+type: policy
+title: "Proposed Change: Troop 413 Policies"
+subtitle: "Role Definition Updates"
+date: "2026-07-08"
+---
+
 # Proposed Change: Troop 413 Policies — Role Definition Updates
 
 **Date:** 2026-07-08
@@ -43,14 +50,14 @@
 
 Net role list changes versus the current table:
 
-| Role | Change |
-|---|---|
-| Activities | Removed |
-| Recordkeeping | Removed |
-| Camp Card Coordinator | Added |
-| Popcorn Kernel | Added |
-| Summer Camp Coordinator | Added |
-| Training Coordinator | Added |
+| Role                    | Change  |
+| ----------------------- | ------- |
+| Activities              | Removed |
+| Recordkeeping           | Removed |
+| Camp Card Coordinator   | Added   |
+| Popcorn Kernel          | Added   |
+| Summer Camp Coordinator | Added   |
+| Training Coordinator    | Added   |
 
 ## 4. "Program Leadership Role Definitions" section
 
