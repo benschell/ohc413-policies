@@ -2,7 +2,7 @@
 type: policy
 title: "Troop 413 Policies"
 subtitle: "Policies and Procedures for Troop 413"
-date: "Last Revised: 06/03/2026"
+date: "Last Revised: 08/05/2026"
 ---
 
 ## Introduction
@@ -66,36 +66,16 @@ The Committee establishes specific terms for adult volunteer roles to ensure sta
 
 ## Official Functional Role Descriptions / Expectations
 
-Scouting America's registration systems has several Registered Positions as well as a series of Functional Roles. Troop 413 has defined additional Functional Roles to support operation of the unit. Holding a Functional Role in support of the unit does not confer committee voting rights for the individual. Functional Roles below annotated with \[SA\] are explicitly listed in the Scouting America "Position Manager"; the rest are unlisted.
+Scouting America's registration systems has several Registered Positions as well as a series of Functional Roles. Troop 413 has defined additional Functional Roles to support operation of the unit. Holding a Functional Role in support of the unit does not confer committee voting rights for the individual.
+
+Full descriptions of every Committee and Program Leadership role — responsibilities, training requirements, expectations, and typical time commitments — are maintained in the **Troop 413 Adult Leadership Roles & Responsibilities** guide, which is the authoritative reference for role scope. This policy governs which roles require Committee membership; the guide governs what each role does.
 
 Troop 413 recognizes two categories of Functional Roles:
 
-1. **Committee-Required Roles** — These roles must be filled by a Committee Member due to the nature of their responsibilities (e.g., fiduciary duties, official record-keeping, advancement oversight).
-2. **Open Roles** — It is preferred that these roles are filled by a Committee Member, but due to volunteer availability constraints, may be filled by any registered adult.
+1. **Committee-Required Roles** — must be filled by a Committee Member due to the nature of their responsibilities (fiduciary duties, official record-keeping, advancement oversight): **Secretary**, **Treasurer**, **Advancement Chair**.
+2. **Open Roles** — preferred to be filled by a Committee Member, but may be filled by any registered adult given volunteer availability: **Outdoor/Activities Chair**, **Fundraising Chair**, **Camp Card Coordinator**, **Popcorn Kernel**, **Summer Camp Coordinator**, **Quartermaster**, **Training Coordinator**.
 
-*Estimated time commitments do not include committee meeting attendance time.*
-
-### Committee-Required Roles
-
-These roles must be held by a Committee Member.
-
-| Role | Role Description |
-|------|-----------------|
-| **Secretary** | Keep meeting and attendance records for committee meetings; report minutes from prior meeting. *Time Commitment: 1h / month* |
-| **Treasurer** \[SA\] | Handle troop funds; make appropriate payments as needed (e.g. reimbursements, unit charter, event registrations); provide financial report at meetings. *Time Commitment: 1-2h / month* |
-| **Advancement** \[SA\] | Coach / support Scoutmasters and parents on inputting advancement into Scoutbook / IA; create and manage an inventory of awards on hand; create and manage the PO ahead of award ceremonies; coordinate procuring awards; validate / track after award ceremonies. *Time Commitment: 2h / month* |
-
-### Open Roles
-
-It is preferred that these roles are held by a Committee Member but may be filled by any registered adult.
-
-| Role | Role Description |
-|------|-----------------|
-| **Activities** \[SA\] | Work with troop leadership to plan / coordinate special event activities (e.g. Courts of Honor, Eagle ceremonies); determine themes, scripts, etc.; manage requirements (e.g. meal signups); communicate upcoming events to parents. *Time Commitment: 2h / month* |
-| **Fundraising** | Coordinate fundraising opportunities (e.g. Popcorn/Peanut, Camp Cards); obtain relevant permissions for non-council-organized events; work with Treasurer to handle funds appropriately. *Time Commitment: variable depending on season and fundraiser* |
-| **Quartermaster** | Manage and maintain an inventory of troop equipment and gear; coordinate equipment checkout and return for troop events; identify equipment needs and bring recommendations to the committee. *Time Commitment: 1-2h / month, variable around campouts* |
-| **Recordkeeping** | Manage records for activities (med forms, permission slips, etc.); ensure compliance ahead of activities. *Time Commitment: < 1h / month on average, some extra work around activities* |
-| **Training** \[SA\] | Communicate required (for leaders) and available training (for leaders and parents); ensure compliance ahead of activities. *Time Commitment: < 1h / month* |
+See the Adult Leadership Guide for full role descriptions.
 
 ---
 
@@ -187,7 +167,7 @@ Allocation of funds will vary depending on the fundraiser. The allocation should
 
 Troop 413 takes photos and videos of the Troop's activities for sharing with parents/guardians and for promotional purposes (for example, posting on the Troop's social media accounts). Troop 413 will annually request, at the beginning of the program year, that each Scout's parent/guardian fill out a Photo Release form and make an explicit choice about whether to share these rights. Photo Release is opt-in: a lack of a form on file will be considered as not having consent. However, we ask that parents please make a choice and provide a filled out Photo Release form.
 
-If at any time during the program year a parent or guardian wishes to withdraw their photo release, they will submit an updated photo release form to the Recordkeeping Chair and verbally notify the Scoutmaster. The Recordkeeping Chair will be responsible for maintaining these records and ensuring all leaders are aware of the current set of those who have not given consent.
+If at any time during the program year a parent or guardian wishes to withdraw their photo release, they will submit an updated photo release form to the Secretary and verbally notify the Scoutmaster. The Secretary will be responsible for maintaining these records and ensuring all leaders are aware of the current set of those who have not given consent.
 
 ---
 
@@ -197,7 +177,7 @@ Access to individual Scout data within Scoutbook, including rosters, advancement
 
 - The Scoutmaster shall have access to the entire troop roster and all Scout records necessary for overseeing the well-being and progress of every Scout.
 - Assistant Scoutmasters, when explicitly assigned to a specific Patrol by the Scoutmaster, will be granted access to the roster and relevant advancement records of Scouts within their assigned Patrol.
-- Key Committee members, such as the Advancement Chair and Recordkeeping Chair, will be granted the minimum necessary access required to fulfill their administrative responsibilities (e.g., managing troop-wide advancement, recharter, or contact information), as determined by the Committee Chair in consultation with the Scoutmaster.
+- Key Committee members, such as the Advancement Chair, will be granted the minimum necessary access required to fulfill their administrative responsibilities (e.g., managing troop-wide advancement, recharter, or contact information), as determined by the Committee Chair in consultation with the Scoutmaster.
 - All other individuals, including leaders not assigned a specific role requiring Scoutbook access, shall have no access to individual Scout records beyond what is generally visible to parents for their own Scout.
 
 ---
@@ -238,6 +218,8 @@ Troop 413 has the following Program Leadership roles:
 
 **Assistant Scoutmaster:** Supports the Scoutmaster in all duties, proactively accepts and manages ongoing program responsibilities delegated by the Scoutmaster, and assists in mentoring and supporting Scouts. This individual is a primary backup, ensuring seamless program continuity and leadership succession, and fills the role of the Scoutmaster in their absence for Scout-facing meetings and activities. The Assistant Scoutmaster serves at the pleasure of the Troop Committee.
 
+Troop 413 also recognizes Functional Roles within Program Leadership: specialized duties assigned to an Assistant Scoutmaster rather than a separate registered position (e.g., **Health Officer**, responsible for medical form custody and medication administration at outings). See the Adult Leadership Guide for full descriptions.
+
 ---
 
 ## Program Leadership Term Limits
@@ -262,6 +244,7 @@ All visiting youth and their accompanying parent/guardian must check-in upon arr
 
 ## Revision History
 
+- **08/05/2026** - (v4) Aligned Functional Role definitions with the Adult Leadership Guide (Committee-Required/Open Roles now point to the guide instead of duplicating descriptions), replaced the Recordkeeping Chair with the Secretary for Photo Release withdrawal handling and Scoutbook access, and added a Program Leadership Functional Roles note (e.g., Health Officer); approved by the Troop Committee on 08/05/2026.
 - **07/08/2026** - (v3) Added the *Electronic and Card-Based Payments* subsection to the *Money Handling* section; approved by the Troop Committee on 07/08/2026.
 - **06/03/2026** - (v2) Added the *Remote Meeting Attendance* policy; approved as-written by the Troop Committee on 06/03/2026.
 - **05/06/2026** - Initial version (v1); approved as-written by the Troop Committee.
