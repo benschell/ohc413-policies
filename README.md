@@ -11,6 +11,7 @@ Policy documents, committee meeting agendas, and minutes for Pack 413 and Troop 
   - `agenda-format.md` - Schema reference for agenda markdown files
   - `form-format.md` - Schema reference for form markdown files
 - `markdown-converter/` - TypeScript tool for converting markdown to PDF
+- `leadership-guide/` - Troop 413 Adult Leadership Roles & Responsibilities guide: standalone role handouts, the combined guide PDF, and the new-leader onboarding checklist. Self-contained LaTeX project (its own `build_guide.sh`, `pdflatex`/`latexmk`); not part of the markdown-converter pipeline. See `leadership-guide/README.md`.
 - `prior-art/` - Reference documents (will be removed once finalized)
 
 Each source directory contains a `pdf/` subdirectory with the generated output:
