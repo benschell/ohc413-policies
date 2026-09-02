@@ -1,0 +1,103 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[top=0.5in, bottom=0.5in, left=1in, right=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *}
+
+% Color definitions: adjust to your troop's colors if desired
+\definecolor{scoutgreen}{RGB}{0, 100, 60}
+\definecolor{accent}{RGB}{180, 140, 0}
+\definecolor{lightbg}{RGB}{242, 248, 244}
+
+% Section formatting
+\titleformat{\section}
+  {\large\bfseries\color{scoutgreen}}
+  {}
+  {0em}
+  {}
+  [\vspace{-0.4em}\textcolor{accent}{\rule{\linewidth}{1.5pt}}\vspace{0.2em}]
+
+\titlespacing{\section}{0pt}{0.5em}{0.2em}
+
+\newlist{checklist}{itemize}{1}
+\setlist[checklist]{label=$\square$, leftmargin=1.6em, itemsep=1pt, topsep=1pt}
+
+\pagestyle{empty}
+
+\begin{document}
+
+%% ── HEADER ──────────────────────────────────────────────────────────────────
+\begin{center}
+  {\small\color{scoutgreen}\textbf{SCOUTING AMERICA \textbullet{} TROOP 413}} \\[4pt]
+  {\fontsize{20pt}{24pt}\selectfont\bfseries\color{scoutgreen} New Leader Onboarding Checklist} \\[4pt]
+  {\large\color{accent} For Newly Registered Adult Leaders} \\[4pt]
+  \textcolor{accent}{\rule{0.6\linewidth}{1pt}}
+\end{center}
+
+\vspace{0.3em}
+\small
+
+This is a two-part checklist covering what's needed to bring on a new registered adult leader, regardless of role. Part 1 is handled by the unit; Part 2 is completed by the new leader. For what a specific role does and its own training requirements, see that role's page in the \textit{Troop 413 Adult Leadership Roles \& Responsibilities} guide.
+
+\section{Part 1: Unit Responsibilities}
+
+\textbf{\color{scoutgreen} Before BSA/Council Approval}
+\begin{checklist}
+  \item Confirm the applicant has completed current Safeguarding Youth Training (SYT) before accepting their application
+  \item Help the new leader complete the BSA Adult Application and background check
+  \item Submit the application to the Chartered Organization (King Moravian Church) for approval
+\end{checklist}
+
+\textbf{\color{scoutgreen} After BSA/Council Approval} (do not grant any of the below until registration is fully approved)
+\begin{checklist}
+  \item Set up the new leader's troop Google Workspace account
+  \item Add the new leader to the appropriate Google Chat groups
+  \item Help the new leader install Google Workspace and Chat on their phone
+  \item Grant Scoutbook access appropriate to their role, per Troop 413 Policies \& Procedures
+  \item Assign an outgoing role-holder or mentor for a transition briefing
+  \item Introduce the new leader to the Scouts, families, and committee
+\end{checklist}
+
+\section{Part 2: New Leader Responsibilities}
+
+\textbf{\color{scoutgreen} Before BSA/Council Approval}
+\begin{checklist}
+  \item Set up your my.scouting.org account (required to take SYT)
+  \item Complete current Safeguarding Youth Training (SYT) before submitting your application
+  \item Complete the BSA Adult Application and background check
+\end{checklist}
+
+\textbf{\color{scoutgreen} After BSA/Council Approval}
+\begin{checklist}
+  \item Complete the position-specific training listed on your role's page in the Adult Leadership Guide
+  \item \textit{Program Leadership only:} complete IOLS and Hazardous Weather Training
+  \item Install Google Workspace and Chat on your phone
+  \item Read your role's page in the Adult Leadership Guide
+  \item Meet with the outgoing role-holder (if any) and the Committee Chair or Scoutmaster
+  \item Obtain a Field Uniform
+  \item Attend your first troop committee meeting or troop meeting
+\end{checklist}
+
+\vspace{0.3em}
+\noindent\colorbox{lightbg}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \vspace{0.4em}
+    \textbf{\color{scoutgreen} Questions?} \quad Contact the Committee Chair.
+    \vspace{0.4em}
+  \end{minipage}
+}
+
+\vspace{0.5em}
+\begin{center}
+  \footnotesize\color{gray}
+  Troop 413 \textbullet{} Onboarding Checklist \textbullet{} Last updated: \today
+\end{center}
+
+\end{document}
